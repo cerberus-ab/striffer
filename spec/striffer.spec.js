@@ -88,5 +88,27 @@ describe('Strings differ specification', () => {
         });
     });
     
+    describe('function byList', () => {
+        let testCase = [
+            'Hello, there are about 25 dogs',
+            'Hello, there was about 1 cats',
+            'Hello there were about 300 cats',
+            'Hell morning, there are about 30 cats'
+        ];
+        it('should merge differences by each pair', () => {
+            let result = striffer.byList(testCase);
+            assertDiffEqual(result[0].diff, [4, 6, 13, 16, 23, 30]);
+            assertDiffEqual(result[1].diff, [4, 6, 13, 16, 23, 29]);
+            assertDiffEqual(result[2].diff, [4, 5, 12, 16, 23, 31]);
+            assertDiffEqual(result[3].diff, [4, 13, 20, 23, 30, 37]);
+        });
+        it('should provide detailed response by passed flag', () => {
+            let result = striffer.byList(testCase, { detailed: true });
+            assert.ok(result.pairs instanceof Array);
+            assert.ok(result.list instanceof Array);
+            assert.equal(result.length, 4);
+        });    
+    });
+    
 });
 
