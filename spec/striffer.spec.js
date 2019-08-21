@@ -59,11 +59,17 @@ describe('Strings differ specification', () => {
                 diff1: [0, 5],
                 diff2: [0, 12]
             }, {
-                desc: 'look forward for 3 characters by default',
+                desc: 'look forward for 3 characters by default (greedy factor)',
                 str1: 'Hello, there are 110 dogs!',
                 str2: 'Hello, there was 125 dogs!',
                 diff1: [13, 20],
                 diff2: [13, 20],
+            }, {
+                desc: 'understand greedy factor for tails',
+                str1: 'Developed into advanced writing.',
+                str2: 'Developed into something else.',
+                diff1: [15, 28, 31, 32],
+                diff2: [15, 21, 24, 30]
             }, {
                 desc: 'respect greedy factor passed as option',
                 str1: 'Hello, there are 110 dogs!',

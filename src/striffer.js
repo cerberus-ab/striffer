@@ -30,7 +30,7 @@
         let d1 = [], b1 = '', i1 = 0, s1 = '';
         let d2 = [], b2 = '', i2 = 0, s2 = '';
   
-        const find = (str, trg) => trg ? str.indexOf(trg) : -1;
+        const find = (str, trg) => trg.length >= options.greedyFactor ? str.indexOf(trg) : -1;
         
         const process = (dr1, dr2, i1, i2, io, blen) => {
             push(dr1, 1 + i1 - blen, 1 + i1 - options.greedyFactor);
@@ -70,10 +70,23 @@
         if (b1) push(d1, ustr1.length - b1.length, ustr1.length);
         if (b2) push(d2, ustr2.length - b2.length, ustr2.length);
   
+        if (!checkDiff(d1) || !checkDiff(d2)) {
+            throw new Error('Unexpected differences image');
+        }
         return [
             { value: str1, diff: d1 },
             { value: str2, diff: d2 }
         ];
+    }
+    
+    function checkDiff(diff) {
+        let diffSorted = diff.slice().sort((d1, d2) => d1 - d2);
+        for (let i = 0; i !== diff.length; i += 1) {
+            if (diff[i] !== diffSorted[i]) {
+                return false;
+            }
+        }
+        return true;
     }
     
     /*
@@ -150,15 +163,15 @@
                 }
             }
         });
-        let diff = [], exist = true;
+        let diffRet = [], exist = true;
         for (let i = 0; i != mask.length; i += 1) {
             if ((mask[i] && exist) || (!mask[i] && !exist)) {
-                diff.push(i);
+                diffRet.push(i);
                 exist = !exist;
             }
         }
-        if (!exist) diff.push(mask.length);
-        return diff;
+        if (!exist) diffRet.push(mask.length);
+        return diffRet;
     }
     
     
