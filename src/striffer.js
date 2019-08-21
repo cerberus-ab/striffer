@@ -141,7 +141,7 @@
     // merges differencies for a string
     function mergeDiff(diffAll) {
         let mask = Array.from(Array(
-            diffAll.reduce((max, diff) => Math.max(max, diff[diff.length - 1]), 0)
+            diffAll.reduce((max, diff) => Math.max(max, diff.length ? diff[diff.length - 1] : 0), 0)
         )).map(e => false);
         diffAll.forEach(diff => {
             for (let i = 0; i !== diff.length; i += 2) {

@@ -4,7 +4,8 @@
   "description": "Shows differences between two or several strings",
   "main": "index.js",
   "scripts": {
-    "test": "mocha ./spec/**/*.[sS]pec.js"
+    "test": "mocha ./spec/**/*.[sS]pec.js",
+    "test-perf": "mocha --timeout 300000 ./spec/**/*.[pP]erf.js"
   },
   "keywords": [
     "strings",

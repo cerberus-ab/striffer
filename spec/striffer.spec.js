@@ -22,6 +22,13 @@ describe('Strings differ specification', () => {
     describe('function byPair', () => {
         let testCases = [
             {
+                desc: 'detect no differences for similar strings',
+                str1: 'Hello there are 10 dogs',
+                str2: 'Hello there are 10 dogs',
+                diff1: [],
+                diff2: []
+            },
+            {
                 desc: 'detect in the center with the same length',
                 str1: 'Hello there are about 110 dogs!',
                 str2: 'Hello there was about 125 dogs!',
@@ -65,6 +72,12 @@ describe('Strings differ specification', () => {
                 diff2: [13, 16, 18, 20],
                 options: { greedyFactor: 2 }
             }, {
+                desc: 'detect permutations',
+                str1: 'Hello there are 123 dogs!',
+                str2: 'Hello there are 231 dogs!',
+                diff1: [16, 19],
+                diff2: [16, 19]
+            }, {
                 desc: 'pay attention on case by default',
                 str1: 'Hello, my friend again!',
                 str2: 'hello, my FRIEND again!',
@@ -89,6 +102,17 @@ describe('Strings differ specification', () => {
     });
     
     describe('function byList', () => {
+        it('should detect no differences for similar strings', () => {
+            let result = striffer.byList([
+                'Hello there are 10 dogs',
+                'Hello there are 10 dogs',
+                'Hello there are 10 dogs'
+            ]);
+            assertDiffEqual(result[0].diff, []);
+            assertDiffEqual(result[1].diff, []);
+            assertDiffEqual(result[2].diff, []);
+        });
+        
         let testCase = [
             'Hello, there are about 25 dogs',
             'Hello, there was about 1 cats',
