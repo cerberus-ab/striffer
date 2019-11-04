@@ -1,7 +1,7 @@
 {
   "name": "striffer",
   "version": "0.1.0",
-  "description": "Shows differences between two or several strings",
+  "description": "Finds difference between two or more strings",
   "main": "index.js",
   "scripts": {
     "test": "mocha ./spec/**/*.[sS]pec.js",
@@ -9,7 +9,7 @@
   },
   "keywords": [
     "strings",
-    "differences"
+    "difference"
   ],
   "author": "Antony Belov <cerberus.ab@mail.ru>",
   "license": "MIT",

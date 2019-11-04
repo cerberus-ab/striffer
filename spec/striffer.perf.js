@@ -50,7 +50,7 @@ describe('Strings differ performance', () => {
     
     // the test
     let repeats = 100;
-    let testCases = [2, 10, 40, 100];
+    let testCases = [2, 10, 40, 100, 150];
     
     testCases.forEach((amount, index) => {
         it(`should pass over ${amount} strings`, () => {

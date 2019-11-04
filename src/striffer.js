@@ -79,6 +79,7 @@
         ];
     }
     
+    // understands that a diff is valid or not
     function checkDiff(diff) {
         let diffSorted = diff.slice().sort((d1, d2) => d1 - d2);
         for (let i = 0; i !== diff.length; i += 1) {
