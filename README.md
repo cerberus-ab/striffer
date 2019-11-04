@@ -2,7 +2,7 @@
 The package provides functions to find difference between pair or list of strings.
 
 ### Installation
-Just include [/src/striffer.js](striffer.js) in your client- or server-side application. It doesn't require a build (yet).
+Just include [striffer.js](/src/striffer.js) in your client- or server-side application. It doesn't require a build (yet).
 
 ### Development
 To run the next tasks you need to install dependencies using npm:
