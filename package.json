@@ -1,11 +1,12 @@
 {
   "name": "striffer",
-  "version": "0.1.0",
+  "version": "0.1.0-alpha",
   "description": "Finds difference between two or more strings",
   "main": "index.js",
   "scripts": {
     "test": "mocha ./spec/**/*.[sS]pec.js",
-    "test-perf": "mocha --timeout 300000 ./spec/**/*.[pP]erf.js"
+    "test-perf": "mocha --timeout 300000 ./spec/**/*.[pP]erf.js",
+    "build": "mkdir -p ./dist && uglifyjs ./src/striffer.js > ./dist/striffer.min.js -b beautify=false,preamble=\"'/*! Finds difference between strings - v0.1 - 2019; Licensed MIT */'\""
   },
   "keywords": [
     "strings",
@@ -14,6 +15,7 @@
   "author": "Antony Belov <cerberus.ab@mail.ru>",
   "license": "MIT",
   "devDependencies": {
-    "mocha": "^6.2.0"
+    "mocha": "^6.2.0",
+    "uglify-es": "^3.3.9"
   }
 }
