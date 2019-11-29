@@ -2,7 +2,7 @@
   "name": "striffer",
   "version": "0.1.0-alpha",
   "description": "Finds difference between two or more strings",
-  "main": "index.js",
+  "main": "dist/striffer.min.js",
   "scripts": {
     "test": "mocha ./spec/**/*.[sS]pec.js",
     "test-perf": "mocha --timeout 300000 ./spec/**/*.[pP]erf.js",
