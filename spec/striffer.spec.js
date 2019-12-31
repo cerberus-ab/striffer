@@ -108,12 +108,25 @@ describe('Strings differ specification', () => {
     });
     
     describe('function byList', () => {
+        it('should return empty result for no strings', () => {
+            let result = striffer.byList([]);
+            assert.ok(result instanceof Array);
+            assert.equal(result.length, 0);
+        });
+        it('should defect no differences for single string', () => {
+            let result = striffer.byList([
+                'Hello there are 10 dogs'
+            ]);
+            assert.equal(result.length, 1);
+            assertDiffEqual(result[0].diff, []);
+        });
         it('should detect no differences for similar strings', () => {
             let result = striffer.byList([
                 'Hello there are 10 dogs',
                 'Hello there are 10 dogs',
                 'Hello there are 10 dogs'
             ]);
+            assert.equal(result.length, 3);
             assertDiffEqual(result[0].diff, []);
             assertDiffEqual(result[1].diff, []);
             assertDiffEqual(result[2].diff, []);
@@ -127,6 +140,7 @@ describe('Strings differ specification', () => {
         ];
         it('should merge differences by each pair', () => {
             let result = striffer.byList(testCase);
+            assert.equal(result.length, 4);
             assertDiffEqual(result[0].diff, [4, 6, 13, 16, 23, 30]);
             assertDiffEqual(result[1].diff, [4, 6, 13, 16, 23, 29]);
             assertDiffEqual(result[2].diff, [4, 5, 12, 16, 23, 31]);

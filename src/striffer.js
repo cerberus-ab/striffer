@@ -99,10 +99,20 @@
      */
     function byList(strs, opts = null) {
         let options = getOptions(opts);
+        if (!(strs instanceof Array) || !strs.length) {
+            return [];
+        }
         
-        let tasks = createTasks(strs);
-        let pairs = computePairs(tasks, options);
-        let list = reduceDiff(collectFlat(pairs));
+        let tasks, pairs, list;
+        if (strs.length > 1) {
+            tasks = createTasks(strs);
+            pairs = computePairs(tasks, options);
+            list = reduceDiff(collectFlat(pairs));
+        } else {
+            tasks = [];
+            pairs = [];
+            list = [{ value: strs[0], diff: [] }];
+        }
         
         // collect and return the result
         if (options.detailed) {
