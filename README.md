@@ -2,24 +2,33 @@
 The package provides functions to find difference between pair or list of strings.
 
 ### Installation
-Just include [striffer.js](/src/striffer.js) in your client- or server-side application. It doesn't require a build (yet).
-
-### Development
-To run the next tasks you need to install dependencies using npm:
+Using npm:
 ```shell
-npm i
+npm i --save striffer
 ```
 
-To run unit tests:
-```shell
-npm run test
+In a browser:
+```javascript
+<script src="dist/striffer.min.js"></script>
 ```
 
-To run performance tests:
-```shell
-npm run test-perf
+In Node.js:
+```javascript
+const striffer = require('striffer');
 ```
 
-### TODO
-- Add CI and publish the package in npm
-- Add demo page and provide default renders
+### Documentation
+Returns differences between two strings:
+> Array\<object\> function byPair(string str1, string str2, object options = null)
+
+Returns differences between several strings in a list:
+> Array\<object\> function byList(Array\<string\> strs, object options = null)
+
+The return item object contains:
+- `string` value - an original string
+- `Array<number>` diff - the list with indices which frame the differences
+
+### Options
+- `number` greedyFactor, By default: 3
+- `boolean` caseInsensitive, By default: false
+- `boolean` detailed (*byList* only), By default: false
