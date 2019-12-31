@@ -8,12 +8,20 @@
     "test-perf": "mocha --timeout 300000 ./spec/**/*.[pP]erf.js",
     "build": "mkdir -p ./dist && uglifyjs ./src/striffer.js > ./dist/striffer.min.js -b beautify=false,preamble=\"'/*! Finds difference between strings - v0.1 - 2019; Licensed MIT */'\""
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cerberus-ab/striffer.git"
+  },
   "keywords": [
     "strings",
     "difference"
   ],
   "author": "Antony Belov <cerberus.ab@mail.ru>",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cerberus-ab/striffer/issues"
+  },
+  "homepage": "https://github.com/cerberus-ab/striffer#readme",
   "devDependencies": {
     "mocha": "^6.2.0",
     "uglify-es": "^3.3.9"
