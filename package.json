@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/cerberus-ab/striffer#readme",
   "devDependencies": {
-    "mocha": "^6.2.0",
+    "mocha": "^10.2.0",
     "uglify-es": "^3.3.9"
   }
 }
